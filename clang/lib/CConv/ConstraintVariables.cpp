@@ -1574,6 +1574,10 @@ void FunctionVariableConstraint::brainTransplant(ConstraintVariable *FromCV,
   auto RetVar = getOnly(returnVars);
   RetVar->brainTransplant(FromRetVar, I);
   // Transplant params.
+  if(From->numParams() == numParams()) {
+    From->dump();
+    I.dump();
+  }
   assert(From->numParams() == numParams());
   for (unsigned i = 0; i < From->numParams(); i++) {
     CVarSet &FromP = From->getParamVar(i);
